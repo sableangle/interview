@@ -1,0 +1,8 @@
+<?php
+	$filename = "note.mzb";
+	$myFile = "note.mzb";
+	header("Cache-Control: public, must-revalidate");
+	header('Content-Transfer-Encoding: Binary'); //½s½X¤è¦¡
+	header('Content-Disposition: attachment; filename="'.$filename.'"');
+	readfile($myFile);
+?>

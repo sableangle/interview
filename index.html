@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+	Astral by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>個人履歷表_黃建豪</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+		<script src="js/chart.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+		<link media="all" rel="stylesheet" type="text/css" href="/build/cssplot.full.css" />
+		
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+			<link rel="stylesheet" href="css/style-noscript.css" />
+		</noscript>
+
+		
+		<!-- Add mousewheel plugin (this is optional) -->
+		<script type="text/javascript" src="./lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+		<!-- Add fancyBox main JS and CSS files -->
+		<script type="text/javascript" src="./source/jquery.fancybox.js?v=2.1.5"></script>
+		<link rel="stylesheet" type="text/css" href="./source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".thumb").fancybox({
+					maxWidth:960,
+					autoScale:false,
+					autoResize:false,
+					fitToView	: true,
+					width		: '90%',
+					
+					autoSize	: false,
+					closeClick	: false,
+					openEffect	: 'none',
+					closeEffect	: 'none',
+					
+					beforeShow: function(){
+					  // this.width = $('.fancybox-iframe').contents().find('html').width()+50;
+					   this.height = $('.fancybox-iframe').contents().find('html').height();
+					  }
+				});
+				$(".web").fancybox({
+					autoScale:false,
+					autoResize:false,
+					fitToView	: false,
+					width		: '100%',
+					height		: '100%',
+					autoSize	: false,
+					closeClick	: false,
+					openEffect	: 'none',
+					closeEffect	: 'none',
+				});
+			});
+		</script>
+		
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper-->
+			<div id="wrapper">
+				
+				<!-- Nav -->
+					<nav id="nav">
+						<a href="#me" class="icon fa-home active"><span>首頁</span></a>
+						<a href="#work" class="icon fa-folder"><span>經歷</span></a>
+						<a href="#skill" class="icon fa fa-wrench"><span>相關技能</span></a>
+						<a href="#paper" class="icon fa fa-book"><span>作品瀏覽</span></a>
+						<a href="#contact" class="icon fa fa-mobile"><span>聯絡資訊</span></a>
+
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						
+						<!-- Me -->
+							<article id="me" class="panel">
+								<header>
+									<h1>黃建豪</h1>
+									<p style="font-size:1em;">「堅持努力不懈的過程雖然很辛苦，但也很快樂！」</p>
+								</header>
+								<a href="#work" class="jumplink pic">
+									<span class="arrow icon fa-chevron-right"><span></span></span>
+									<img src="images/me.jpg" alt="" />
+								</a>
+							</article>
+						<!-- work --> 
+							<article id="work" class="panel">
+								<iframe src="work.html" SCROLLING="NO" style="width:100%; height:1000px;overflow:hidden;"></iframe>
+								
+							</article>
+						<!-- skill --> 
+							<article id="skill" class="panel">
+								<p>各工具應用能力自評</p>
+								<div id="container" style="min-width: 310px; max-width: 800px; height: 600px; margin: 0 auto"></div>
+								<ul>
+									<li>0% ~ 25% 聽過並實際操作過，但尚無法應用於工作中</li>
+									<li>26% ~ 50% 能使用該工具完成目標工作，但僅會操作部分功能</li>
+									<li>51% ~ 75% 已熟練該工具，但仍有部分功能尚未使用過</li>
+									<li>76% ~ 99% 已熟練該工具，並且能運用自如</li>
+									<li>100% 完全精通</li>
+								</ul>	
+							</article>
+						<!-- paper --> 
+							<article id="paper" class="panel">
+								<header>
+									<h2>作品瀏覽 - 遊戲 & 多媒體</h2>
+								</header>
+								
+								<section>
+									<div class="row">
+										<div class="3u">
+											<a href="paper/cybernetics.html" data-fancybox-type="iframe" class="image fit thumb"><img src="images/Cyber.jpg" alt="">
+												<div class = "papertext">機控全城</div>
+											</a>
+										</div>
+										<div class="3u">
+										
+											<a href="paper/knocking.html"  data-fancybox-type="iframe" class="image fit thumb"><img src="images/knocking_a.png" alt="">
+												<div class = "papertext">敲擊小公主</div>
+											</a>
+											
+										</div>
+										<div class="3u">
+											<a href="paper/pixelmaze.html" data-fancybox-type="iframe"  class="image fit thumb"><img src="images/maze.jpg" alt="">
+											<div class = "papertext">Pixel Maze</div>
+										</a>
+										</div>
+										<div class="3u">
+											<a href="paper/musicbox.html" data-fancybox-type="iframe" class="image fit thumb"><img src="images/music.png" alt="">
+												<div class = "papertext">互動式音樂盒</div>
+											</a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="3u">
+											<a href="paper/Chack.html" data-fancybox-type="iframe" class="image fit thumb"><img src="images/Chack.png" alt="">
+												<div class = "papertext">CuccoChack</div>
+											</a>
+										</div>
+										<div class="3u">
+										
+											<a href="paper/djcb.html"  data-fancybox-type="iframe" class="image fit thumb"><img src="images/djcb.png" alt="">
+												<div class = "papertext">DJ Cardboard</div>
+											</a>
+											
+										</div>
+										<div class="3u">
+											<a href="paper/doodlespace.html" data-fancybox-type="iframe"  class="image fit thumb"><img src="images/ds.png" alt="">
+											<div class = "papertext">Doodle Space</div>
+										</a>
+										</div>
+										<div class="3u">
+											<a href="paper/paint.html" data-fancybox-type="iframe" class="image fit thumb"><img src="images/paint.png" alt="">
+												<div class = "papertext">你也是油畫大師</div>
+											</a>
+										</div>
+									</div>
+								</section>
+
+								<header>
+									<h2>作品瀏覽 - 其他 </h2>
+								</header>
+								<section>
+									<div class="row">
+										<div class="4u">
+											<a href="paper/ball.html" data-fancybox-type="iframe" class="image fit thumb"><img src="images/ball.png" alt="">
+												<div class = "papertext">機械球</div>
+											</a>
+										</div>
+										<div class="4u">
+										
+											<a href="paper/iclone.html"  data-fancybox-type="iframe" class="image fit thumb"><img src="images/iclone.jpg" alt="">
+												<div class = "papertext">iClone - KG</div>
+											</a>
+											
+										</div>
+										<div class="4u">
+											<a href="paper/dma622.html" data-fancybox-type="iframe"  class="image fit thumb"><img src="images/DMA-Sound.png" alt="">
+											<div class = "papertext">DMA622 - 數位鍵盤</div>
+										</a>
+										</div>
+										
+									</div>
+								</section>
+
+								<header>
+									<h2>作品瀏覽 - 網頁 </h2>
+								</header>
+								<section>
+									<div class="row">
+										<div class="6u">
+											<a href="http://cybernetics-game.com/" data-fancybox-type="iframe" class="image fit thumb web"><img src="images/cyber_web.jpg" alt="">
+												<div class = "papertext">機控全城官網</div>
+											</a>
+										</div>
+										<div class="6u">
+										
+											<a href="Stone_Web/index.html"  data-fancybox-type="iframe" class="image fit thumb web"><img src="images/stone.jpg" alt="">
+												<div class = "papertext">思想製作工作室 (預覽 - 尚未上線)</div>
+											</a>
+											
+										</div>
+										
+									</div>
+								</section>
+
+
+							</article>
+							
+						<!-- Contact -->
+							<article id="contact" class="panel">
+
+								<table>	
+									<tr>
+										<td><i class="fa fa-facebook-official"></i></td><td><a href="https://www.facebook.com/sableangle"> 黃建豪 </a></td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-phone-square"></i></td><td> 0986554154 </td>
+									</tr>
+									<tr>
+										<td><i class="fa fa-envelope"></i></td><td>  <a href="mailto:sableangle@gmail.com">sableangle@gmail.com </a> </td>
+									</tr>
+								</table>	
+							</article>
+
+					</div>
+		
+				<!-- Footer -->
+					<div id="footer">
+						<ul class="copyright">
+							<li>&copy; <a href="http://www.cloud-macaca">Cloud Macaca</a></li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+		
+			</div>
+
+	</body>
+</html>

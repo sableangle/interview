@@ -1,0 +1,379 @@
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="google" value="notranslate">
+
+  <title>CodePen - Timeline</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Lato:400|Raleway:400);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body,
+    html {
+      color: #2C2C2C;
+      width: 100%;
+      height: auto;
+      background: white;
+      font: 400 1em;
+      font-family:Meiryo,"Meiryo UI","Microsoft JhengHei UI","Microsoft JhengHei",sans-serif;
+
+    }
+  </style>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        iframe_auto_height(); //當文件ready時才能正確取得iframe內容的高度
+      });
+      //iframe auto height主程式
+      function iframe_auto_height(){
+        if(!this.in_site()) return;
+        var iframe;
+        $(parent.document).find("iframe").map(function(){ //找到自己的iframe
+          if($(this).contents().get(0).location == window.location) iframe = this;
+        });
+        if(!iframe) return;//no parent
+        var content_height = $("body").height()+50;
+        content_height = content_height < 300 ? 300 : content_height; //設定最小高度
+        content_height = typeof content_height == 'number' ? content_height+"px" : content_height;
+        iframe.style.height = content_height;
+      }
+      //判斷是否在網頁的iframe之中
+      function in_site(){
+        if(parent != window && this.is_crosssite() == false) return(true);
+        return(false);
+      }
+      //判斷是否跨站(可能是別人嵌入了你的網頁)
+      function is_crosssite() {
+        try {
+          parent.location.host;
+          return(false);
+        }
+        catch(e) {
+          return(true);
+        }
+      }
+    </script>
+  <script src="//assets.codepen.io/assets/libs/prefixfree.min-de773054e90c52a3c2631c944681b64e.js">
+    ">
+  </script>
+
+</head>
+
+<body onload="_l='t';">
+
+  <section id="timeline">
+
+    <div class="timeline">
+      <canvas id="cvs3"></canvas>
+      <article>
+        <h2>學歷</h2>
+        <figure>
+          <figcaption>世新大學<br>數位多媒體設計學系</figcaption>
+          <h6>2011 - NOW</h6>
+          <p>
+            　　目前就讀於世新大學數位多媒體設計學系遊戲設計組，為應屆畢業生，雖本應於今年六月畢業，但基於人生規劃與選課不順利等因素將會延畢半年，延畢期間僅有二學分之課程需上課。（一周只需至學校2小時）
+          </p>
+          <p>
+           　　在學期間完成許多遊戲作品並獲得佳績，包含「機控全城 Cybernetics」
+                、「敲擊小公主 Knocking Girl」、「Pixel Maze」等作品。(詳請見作品預覽頁面)
+          </p>
+        </figure>
+        <figure>
+          <figcaption>市立新莊高中</figcaption>
+          <h6>2008 - 2011</h6>
+          <p>
+            　　前國立(現市立)新莊高中 97 級畢業生，在學期間曾參加合唱團學習團體合作分工要領，曾於國家音樂廳演出。
+          </p>
+          <p>
+           　　 於高二年度開始自修程式設計相關內容，曾代表學校參與二次程式設計競賽，並於童年獨自創立新社團培養團體領導能力。
+          </p>
+        </figure>
+      </article>
+
+      <article>
+        <h2>工作經驗</h2>
+        <figure>
+          <figcaption>遊戲橘子 - 群募貝果</figcaption>
+          <h6>07.2014 - 09.2014</h6>
+          <p>
+          　　群募貝果草創初期曾於遊戲橘子擔任該部門暑期實習生，主要負責網頁前端製作，熟悉 Html 與 Css 工作流程。
+          </p>
+        </figure>
+        <figure>
+          <figcaption>世新大學 S305 管理員</figcaption>
+          <h6>2011 - 2014</h6>
+          <p>
+          　　曾擔任世新大學 S305 電腦實驗室管理員，負責所有軟硬體故障排除，與每學期末的軟體更新與設備維護。
+          </p>
+        </figure>
+         <figure>
+          <figcaption>7-11 福基門市</figcaption>
+          <h6>06.2012 - 01.2013</h6>
+          <p>
+          　　曾於統一企業 7-11 便利商店福基門市擔任計時人員，後因新學期課表無法配合排班而離職。
+          </p>
+        </figure>
+        <figure>
+          <figcaption>世新大學 傳技展</figcaption>
+          <h6>2012</h6>
+          <p>
+          　　於每年由世新大學傳播學院主辦的傳播技能當中擔任硬體設備管理員，進行現場影音控管、緊急故障排除等工作。
+          </p>
+        </figure>
+      </article>
+      <br style="clear:both" />
+    </div>
+
+  </section>
+
+  <script src='//assets.codepen.io/assets/libs/fullpage/jquery-c152c51c4dda93382a3ae51e8a5ea45d.js'></script>
+
+  <script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout-6c99970ade81e43be51fa877be0f7600.js"></script>
+
+  <script>
+    function Timeline(cvs) {
+    
+        var self = this,
+            paused = true,
+            rafid = 0,
+            mouse = { x: 0, y: 0 },
+            canvas = cvs,
+            ctx = null;
+    
+        self.lines = [];
+    
+        self.isOK = false;
+        self.options = {
+            speed: 0.1,
+            density: 8,
+            radius: 600,
+        };
+        self.targets = [
+            [29, 68],
+            [29, 33, 38, 68]
+        ];
+        self.dotColors = [
+            ['#13669b', 'rgba(19, 102, 155, 0.3)', 'rgba(19, 102, 155, 0.08)'],
+            ['#7dd317', 'rgba(113, 222, 15, 0.3)', 'rgba(91, 164, 22, 0.12)'],
+        ];
+    
+        self.isPaused = function () {
+            return paused;
+        };
+    
+        function InitDots() {
+            var tl = $('.timeline');
+            var top = tl.find('h2').outerHeight();
+    
+            self.lines[0].dots = [];
+            var y = top;
+            tl.find('article:first figure').each(function () {
+    
+                self.lines[0].dots.push([$(this).outerWidth() + 20, y + 20]);
+    
+                y += $(this).outerHeight();
+            });
+    
+            self.lines[1].dots = [];
+            var y = top;
+            tl.find('article:last figure').each(function () {
+    
+                self.lines[1].dots.push([canvas.width - $(this).outerWidth() - 20, y + 20]);
+    
+                y += $(this).outerHeight();
+            });
+        }
+    
+        function OnResize() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+    
+            var wasPaused = paused;
+            self.toggle(false);
+            // Init lines
+            self.lines[0].reset(canvas.offsetWidth / 2 - 15);
+            self.lines[1].reset(canvas.offsetWidth / 2 + 15);
+    
+            InitDots();
+    
+            self.toggle(!wasPaused);
+        }
+    
+        function init() {
+            var result = false;
+            try {
+                result = !!(canvas.getContext && (ctx = canvas.getContext('2d')));
+    
+                self.lines[0] = new Line(0, canvas.offsetHeight - 100, '#4789a3', self.options, mouse);
+                self.lines[1] = new Line(0, canvas.offsetHeight - 100, '#a0d59c', self.options, mouse);
+    
+            } catch (e) {
+                return false;
+            }
+            
+            $(canvas).mousemove(function (e) {
+    
+                if (e.offsetX) {
+                    mouse.x = e.offsetX*0.5;
+                    mouse.y = e.offsetY*0.5;
+                }
+                else if (e.layerX) {
+                    mouse.x = e.layerX;
+                    mouse.y = e.layerY;
+                }
+                else {
+                    mouse.x = e.pageX - $(canvas).offset().left;
+                    mouse.y = e.pageY - $(canvas).offset().top;
+                }
+            });
+          
+            $(window).resize(OnResize);
+    
+            OnResize();
+    
+            return result;
+        }
+    
+        function Line(y, height, color, options, mouse) {
+            var self = this;
+    
+            self.color = color;
+            self.options = options;
+            self.mouse = mouse;
+            self.height = height;
+            self.dots = [];
+            self.y = y;
+    
+            self.points = [];
+    
+            self.reset = function (x, f) {
+                self.points = [];
+                for (var y = self.y; y < self.height; y += self.options.density)
+                    self.points.push(new Point(x, y, self.color));
+            }
+    
+            self.update = function () {
+                for (var i = 0; i < self.points.length; i++)
+                    self.points[i].update(self.mouse, self.options);
+            }
+    
+            function Point(x, y) {
+                this.y = y;
+                this.x = x;
+                this.base = { x: x, y: y };
+    
+                this.update = function (mouse, options) {
+                    var dx = this.x - mouse.x,
+                        dy = this.y - mouse.y,
+                        alpha = Math.atan2(dx, dy),
+                        alpha = (alpha > 0 ? alpha : 2 * Math.PI + alpha),
+                        d = options.radius / Math.sqrt(dx * dx + dy * dy);
+    
+                    this.y += Math.cos(alpha) * d + (this.base.y - this.y) * options.speed;
+                    this.x += Math.sin(alpha) * d + (this.base.x - this.x) * options.speed;
+                }
+            }
+        }
+    
+        function drawCircle(p, r, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, r, 0, 2 * Math.PI, true);
+            ctx.closePath();
+            ctx.fill();
+        }
+    
+        function drawLine(p1, p2) {
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+            ctx.closePath();
+        }
+    
+        function redraw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+            for (var i = 0; i < 2; i++) {
+                var points = self.lines[i].points;
+    
+                ctx.beginPath();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = self.lines[i].color;
+                ctx.moveTo(points[15].x, points[15].y);
+    
+                for (var j = 15; j < points.length - 2; j++) {
+                    var point = points[j];
+    
+                    var xc = (points[j + 1].x + point.x) / 2;
+                    var yc = (points[j + 1].y + point.y) / 2;
+    
+                    ctx.quadraticCurveTo(point.x, point.y, xc, yc);
+                }
+                ctx.stroke();
+                ctx.closePath();
+    
+                // Dots
+                ctx.lineWidth = 1.2;
+                ctx.strokeStyle = self.dotColors[i][2];
+                for (var j = 0; j < self.lines[i].dots.length; j++) {
+                    var dot = self.lines[i].dots[j],
+                        id = self.targets[i][j];
+                        dot2 = [
+                            (self.lines[i].points[id].x + self.lines[i].points[id + 1].x) / 2,
+                            (self.lines[i].points[id].y + self.lines[i].points[id + 1].y) / 2,
+                        ];
+    
+                    var p1 = { x: dot[0], y: dot[1] };
+                    var p2 = { x: dot2[0], y: dot2[1] };
+    
+                    drawLine(p1, p2);
+                    drawCircle(p1, 3, self.dotColors[i][0]);
+    
+                    drawCircle(p2, 11, self.dotColors[i][1]);
+                    drawCircle(p2, 5.5, self.dotColors[i][0]);
+                }
+            }
+        }
+    
+        function animate() {
+            rafid = requestAnimationFrame(animate);
+    
+            self.lines[0].update();
+            self.lines[1].update();
+    
+            redraw();
+        }
+    
+        self.toggle = function (run) {
+            if (!self.isOK) return false;
+    
+            if (run === undefined)
+                self.toggle(!paused);
+    
+            else if (!!run && paused) {
+                paused = false;
+                animate();
+            }
+            else if (!!!run) {
+                paused = true;
+                cancelAnimationFrame(rafid);
+            }
+            return true;
+        }
+    
+        self.isOK = init();
+    }
+    new Timeline($('#cvs3').get(0)).toggle(true);
+  </script>
+
+</body>
+
+</html>
